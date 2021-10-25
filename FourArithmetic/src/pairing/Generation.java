@@ -1,4 +1,5 @@
-import java.math.BigDecimal;
+package pairing;
+
 import java.util.Random;
 
 
@@ -108,5 +109,8 @@ public class Generation {
             case 3 -> operator = "÷";
         }
         return operator;
+    }
+
+    public void GenerateExp() {
     }
 }

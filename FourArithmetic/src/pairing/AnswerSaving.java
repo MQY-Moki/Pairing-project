@@ -1,8 +1,10 @@
+package pairing;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.math.BigDecimal;
+
 
 public class AnswerSaving {
     public static String answers="";
@@ -20,6 +22,4 @@ public class AnswerSaving {
         answers = answers + num + "." + answer + "\n";
         num++;
     }
-
-
 }
