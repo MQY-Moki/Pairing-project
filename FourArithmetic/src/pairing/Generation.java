@@ -6,19 +6,12 @@ import java.util.Random;
 // -n 运算数目  -r 数值范围
 public class Generation {
 
-    public static void main(String[] args)  throws NumberFormatException {
+    public static void main(String[] args) throws NumberFormatException {
 
         for (int i = 1; i <= 10; i++) {
             Generation generation = new Generation();
             System.out.println(generation.GenerateExp(10));
         }
-/*        Generation g1 = new Generation();
-        String s = g1.GenerateExp(2,10);
-        System.out.println(s);
-        Calculation c1 = new Calculation();
-        String re = c1.toHouzhui(s);
-        System.out.println(re);
-        System.out.println( c1.cal(re));*/
     }
 
     //生成随机表达式
@@ -29,28 +22,28 @@ public class Generation {
         for (int j = 1; j <= i; j++) {
             if (flag == 0 && i >= 2) {//生成括号，位置在两个运算符的前面  或者在 三个运算符的前面
                 if (j == 1) {
-                    exp = "(" + GenerateNum(r) +GenerateOperator();
+                    exp = "(" + GenerateNum(r) + GenerateOperator();
                 } else if (j == 2) {
-                    exp = exp + GenerateNum(r) +")" + GenerateOperator()+ GenerateNum(r);
-                } else if (j == 3) {
-                    exp = exp + GenerateOperator() +GenerateNum(r);
-                }
-            }
-            if (flag == 1 && i >= 2) {//生成括号 位置在三个运算符时的中间 或者在 两个运算符时的后面
-                if (j == 1) {
-                    exp =  GenerateNum(r) + GenerateOperator() + "(";
-                } else if (j == 2) {
-                    exp = exp + GenerateNum(r) + GenerateOperator()+ GenerateNum(r) + ")";
+                    exp = exp + GenerateNum(r) + ")" + GenerateOperator() + GenerateNum(r);
                 } else if (j == 3) {
                     exp = exp + GenerateOperator() + GenerateNum(r);
                 }
-            }
-            if (i == 1) {
-                exp = GenerateNum(r) + GenerateOperator() + GenerateNum(r);
-            } else if (i == 2) {
-                exp =GenerateNum(r) + GenerateOperator() + GenerateNum(r) + GenerateOperator() + GenerateNum(r);
+            } else if (flag == 1 && i >= 2) {//生成括号 位置在三个运算符时的中间 或者在 两个运算符时的后面
+                if (j == 1) {
+                    exp = exp + GenerateNum(r) + GenerateOperator() + "(";
+                } else if (j == 2) {
+                    exp = exp + GenerateNum(r) + GenerateOperator() + GenerateNum(r) + ")";
+                } else if (j == 3) {
+                    exp = exp + GenerateOperator() + GenerateNum(r);
+                }
             } else {
-                exp = GenerateNum(r) + GenerateOperator() + GenerateNum(r) + GenerateOperator() + GenerateNum(r) + GenerateOperator() + GenerateNum(r);
+                if (i == 1) {
+                    exp = GenerateNum(r) + GenerateOperator() + GenerateNum(r);
+                } else if (i == 2) {
+                    exp = GenerateNum(r) + GenerateOperator() + GenerateNum(r) + GenerateOperator() + GenerateNum(r);
+                } else {
+                    exp = GenerateNum(r) + GenerateOperator() + GenerateNum(r) + GenerateOperator() + GenerateNum(r) + GenerateOperator() + GenerateNum(r);
+                }
             }
         }
         return exp;
@@ -74,7 +67,7 @@ public class Generation {
     }
 
     //生成运算数字时对分数情况进行约分处理（假分数转化为带分数）
-    public String Fraction(int a, int b)  throws NumberFormatException{
+    public String Fraction(int a, int b) throws NumberFormatException {
         int gcd = 1;
         for (int i = 1; i <= a; i++) {//求最大公因子
             if (a % i == 0 && b % i == 0) {
@@ -109,8 +102,5 @@ public class Generation {
             case 3 -> operator = "÷";
         }
         return operator;
-    }
-
-    public void GenerateExp() {
     }
 }
